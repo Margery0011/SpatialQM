@@ -302,7 +302,7 @@ size_in_gb <- function(path) {
 #' @param path The file path from which to load the spatial transcriptomics data.
 #' @param seurat Return a seurat object or not.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 ##' @return Returns a Seurat object containing the loaded and processed spatial transcriptomics data,
 #'         including sample metadata, cell metadata, and embeddings for tissue coordinates. The
 #'         structure and content of the returned object vary depending on the platform.
@@ -500,7 +500,7 @@ readSpatial <- function(sample_id, path, platform=NULL, seurat=FALSE){
 #'
 #' @param path The file path from which to read the transcriptome metadata.
 #' @param platform  The platform for which the transcriptome metadata is being read. Valid options are
-#'        'Xenium', 'CosMx', and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        'Xenium', 'CosMx', and 'Merscope'.
 #' @return Returns a data table with the transcriptome metadata. For 'Xenium', the 'feature_name' column is
 #'         renamed to 'target'. For 'CosMx', the transcriptome file matching '*tx_file.csv.gz' is read.
 #'         No return value for 'Merscope' as it stops execution with an error message.
@@ -702,7 +702,7 @@ getNcells <- function(seu_obj = NULL,
 #' @param features An optional vector of feature names (gene names) for which to calculate the FDR.
 #'        If NULL (default), FDR is calculated for all features in the seu_obj.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @param path Path to generate tx file.
 #' @param tx_file Path to transcription file.
 #' @export
@@ -791,7 +791,7 @@ getGlobalFDR <- function(seu_obj = NULL,
 #' @param features An optional vector of feature names (e.g., gene symbols) for which to calculate transcripts per unit area.
 #'        Defaults to NULL, which means the calculation uses all available features in the RNA assay of the Seurat object.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @param tx_file Path to transcription file.
 #' @param cellSegMeta Path to CellsegMeta file.
 #' @return Returns a data frame with three columns: `sample_id`, `platform`, and `value`. The `value` column contains
@@ -953,7 +953,7 @@ getTxPerArea <- function(seu_obj = NULL,
 #'        of the Seurat object.
 #' @param expMat Path to exprMatrix file.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @return A data frame with columns 'sample_id', 'platform', and 'value', where 'value' represents the
 #'         mean number of transcripts per cell calculated across the specified features. This output can
 #'         be useful for comparative analysis across samples or experimental conditions.
@@ -1156,7 +1156,7 @@ getTxPerNuc <- function(seu_obj = NULL,
 #' @param features An optional vector of gene names for which to calculate mean expression.
 #' If NULL, mean expression is calculated for all genes in the RNA assay.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @param expMat Path to exprMatrix file.
 #' @return A data frame with columns `target` (gene or control probe name), `value` (mean expression level),
 #' `type` (indicating whether the row represents a Gene or Control), `platform`, and `sample_id`.
@@ -1369,7 +1369,7 @@ getMeanSignalRatio <- function(seu_obj = NULL,
 #' @param features An optional vector of gene identifiers for which to calculate the transcript fraction. If NULL, the calculation is performed using all available features in the dataset.
 #' @param tx_file Path to transcription file.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @param path path
 #' @return A data frame containing the calculated fraction of transcripts in cells, along with `sample_id` and `platform` for context. This output provides insight into the efficiency of transcript capture and assignment within the given dataset.
 #' @return A data frame with probe type (Gene or Control), the mean expression values, and the associated sample and platform identifiers.
@@ -1459,7 +1459,7 @@ getCellTxFraction <- function(seu_obj = NULL,
 #' includes all genes in the RNA assay.
 #' @param expMat Path to exprMatrix file.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @return A data frame with `sample_id`, `platform`, and the calculated `value` of the log-ratio.
 #' @export
 #' @import Seurat
@@ -1562,7 +1562,7 @@ getMaxRatio <- function(seu_obj = NULL,
 #' @param features An optional vector of gene identifiers for which to analyze the distribution of maximal
 #' expression values. If NULL, the calculation encompasses all genes in the dataset.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @return A data frame summarizing the maximal expression values across the specified features or the
 #' entire dataset, which can be used to analyze the upper limits of detection and expression within the
 #' sample.
@@ -1662,7 +1662,7 @@ getMaxDetection <- function(seu_obj = NULL, features=NULL, expMat ='path_to_expM
 #' single MECR value that quantifies the overall mutually exclusive co-expression pattern, rounded to three decimal places.
 #' @param  seu_obj A seurat object.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @param expMat Path to exprMatrix file.
 #' @return A data frame containing the `sample_id`, `platform`, and the computed
 #' MECR value. The MECR value is rounded to three decimal places and represents
@@ -1954,7 +1954,7 @@ getSilhouetteWidth <- function(seu_obj){
 #' For example, .99 sparsity means 99% of the values are zero. Similarly, a sparsity of 0 means the matrix is fully dense.
 #' @param seu_obj A Seurat object.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @param expMat Path to exprMatrix file.
 #' @param features An optional vector of feature names (e.g., gene symbols) to include in the calculation.
 #'        Defaults to NULL, in which case the calculation uses all available features in the RNA assay
@@ -2056,7 +2056,7 @@ getSparsity <- function(seu_obj = NULL,
 #' This measure can provide insights into the complexity of the cellular composition and the heterogeneity within the sample.
 #' @param seu_obj A Seurat object containing RNA count data.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @param expMat Path to exprMatrix file.
 #' @param features An optional vector of feature names (e.g., gene symbols) to include in the calculation.
 #'        Defaults to NULL, in which case the calculation uses all available features in the RNA assay
@@ -2409,7 +2409,7 @@ getClusterMetrics <- function(seu_obj, metadata_col){
 #'        expression data files. This parameter is used if no Seurat object is provided.
 #'        The function supports both flat files and Hierarchical Data Format (HDF5) files.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @return Returns an integer indicating the number of valid features (excluding controls
 #'         and system features) present in the expression data.
 getPanelSize <- function(seu_obj = NULL, expMat = 'path_to_expMat', platform = NULL) {
@@ -2463,7 +2463,7 @@ getPanelSize <- function(seu_obj = NULL, expMat = 'path_to_expMat', platform = N
 #'        This function supports processing of '.mtx.gz' for sparse matrices, or '.h5'
 #'        files for HDF5 format expression matrices.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @details
 #' Calculate the total expression and determines the minimal set of features accounting for
 #' at least half of this total, either across all features or a specified subset. If a Seurat
@@ -3244,7 +3244,7 @@ plotMetrics <- function(metrics_list = NULL, PlotAutocorr = T, PlotSparsity = T,
 #' @param sample_id Identifier for the sample being processed.
 #' @param path The file path from which to load the spatial transcriptomics data.
 #' @param platform The platform from which the data originates. Valid options are 'Xenium', 'CosMx',
-#'        and 'Merscope'. Note: 'Merscope' is currently not supported.
+#'        and 'Merscope'.
 #' @return A data frame with the QC metrics for the provided Seurat object, which is also printed to the console.
 #'         Additionally, a PDF file is generated containing a plot and table of the metrics.
 #'
